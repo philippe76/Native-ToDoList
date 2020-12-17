@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { FlatList, StyleSheet, Text, View } from 'react-native';
 import Header from './components/Header';
-import TodoItem from './components/TodoItem'
+import TodoItem from './components/TodoItem';
+import Addtodo from './components/Addtodo';
 
 export default function App() {
 
@@ -17,16 +18,22 @@ export default function App() {
     })
   }
 
+  const addItem = input => {
+    console.log(input);
+    setTodos(prevState => {
+      return [...prevState, {text: input, key: input}]
+    })
+  }
+
   return (
     <View style={styles.container}>
       <Header />
       <View style={styles.content}>
-        {/* <View style={styles.list}> */}
           <FlatList
             data={todos}
             renderItem={({item}) => <TodoItem item={item.text} onDelete={()=>deleteItem(item.key)}/>}
           />
-        {/* </View> */}
+          <Addtodo onAdd={addItem}/>
       </View>
     </View>
   );
