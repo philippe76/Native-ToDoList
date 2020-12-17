@@ -11,6 +11,12 @@ export default function App() {
     { text: 'read some book', key: '3' }
   ]);
 
+  const deleteItem = key => {
+    setTodos(prevState => {
+      return prevState.filter(item => item.key !== key)
+    })
+  }
+
   return (
     <View style={styles.container}>
       <Header />
@@ -18,7 +24,7 @@ export default function App() {
         {/* <View style={styles.list}> */}
           <FlatList
             data={todos}
-            renderItem={({item}) => <TodoItem item={item.text}/>}
+            renderItem={({item}) => <TodoItem item={item.text} onDelete={()=>deleteItem(item.key)}/>}
           />
         {/* </View> */}
       </View>
