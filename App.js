@@ -19,9 +19,8 @@ export default function App() {
   }
 
   const addItem = input => {
-    console.log(input);
     setTodos(prevState => {
-      return [...prevState, {text: input, key: input}]
+      return [{text: input, key: Math.random().toString()}, ...prevState]
     })
   }
 
@@ -29,11 +28,11 @@ export default function App() {
     <View style={styles.container}>
       <Header />
       <View style={styles.content}>
+      <Addtodo onAdd={addItem}/>
           <FlatList
             data={todos}
             renderItem={({item}) => <TodoItem item={item.text} onDelete={()=>deleteItem(item.key)}/>}
           />
-          <Addtodo onAdd={addItem}/>
       </View>
     </View>
   );
