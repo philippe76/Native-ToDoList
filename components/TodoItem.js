@@ -1,17 +1,14 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity} from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons'
 
 
 const TodoItem = ({ item, onDelete }) => {
-
     return (
-
-            <View style={styles.item}>
-                <Text>{item}</Text>
-                <MaterialIcons name="delete" size={24} color="#aaa"  onPress={() => onDelete()}/>
-            </View>         
-
+        <View style={styles.item}>
+            <Text>{item}</Text>
+            <MaterialIcons name="delete" size={24} color="#aaa"  onPress={() => onDelete()}/>
+        </View>      
     )
 }
 
