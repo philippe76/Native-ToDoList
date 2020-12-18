@@ -4,6 +4,8 @@ import Header from './components/Header';
 import TodoItem from './components/TodoItem';
 import Addtodo from './components/Addtodo';
 
+
+
 export default function App() {
 
   const [todos, setTodos] = useState([
@@ -30,18 +32,22 @@ export default function App() {
   }
 
   return (
+
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
       <View style={styles.container}>
         <Header />
         <View style={styles.content}>
-        <Addtodo onAdd={addItem}/>
-            <FlatList
-              data={todos}
-              renderItem={({item}) => <TodoItem item={item.text} onDelete={()=>deleteItem(item.key)}/>}
-            />
+          <Addtodo onAdd={addItem}/>
+          <View style={styles.list}>
+              <FlatList
+                data={todos}
+                renderItem={({item}) => <TodoItem item={item.text} onDelete={()=>deleteItem(item.key)}/>}
+              />
+          </View>
         </View>
       </View>
-    </TouchableWithoutFeedback>
+    </TouchableWithoutFeedback> 
+
   );
 }
 
@@ -52,6 +58,10 @@ const styles = StyleSheet.create({
   },
   content: {
     padding: 40,
-    marginTop: 20
+    flex: 1
+  },
+  list: {
+    marginTop: 20,
+    flex: 1
   }
 });
