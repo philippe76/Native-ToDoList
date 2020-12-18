@@ -18,7 +18,7 @@ const Addtodo = ({onAdd}) => {
                 onChangeText={changeHandler}
                 value={input}
             />
-            <Button title='Add' color='coral' onPress={()=> {
+            <Button title='ADD TODO' color='coral' onPress={()=> {
                 {onAdd(input)};
                 setInput('');
             }}
